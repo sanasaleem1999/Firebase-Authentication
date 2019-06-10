@@ -1,0 +1,151 @@
+<!--my code firebase-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>auth</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <div class="nav-wrapper">
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="modal-trigger" data-target="modal-signin">Sign In</a></li>
+                    <li><a class="modal-trigger" data-target="modal-login">Log In</a></li>
+                    <li><a id="logout">Log Out</a></li>
+                </ul>
+
+            </div> <!--nav-wrapper ends here-->
+        </nav> <!--nav ends here-->
+        <!--modal starts here-->
+        <!--modal structure-->
+        <!--sign up modal-->
+        <div id="modal-signin" class="modal bottom-sheet">
+            <div class="modal-content">
+              <form id="signupform">
+                  <div class="input-field">
+                      <i class="material-icons prefix">email</i>
+                      <input type="text" name="email" id="youremail"class="validate" placeholder="Enter your email"required/>
+                      <label for="youremail">Email:</label>
+                  </div>
+                  <div class="input-field">
+                      <i class="material-icons prefix">create</i>
+                      <input type="password" name="password" id="yourpassword" placeholder="Enter your password" class="validate"required/>
+                      <label for="yourpassword">Password:</label>
+                  </div>
+                  <button class="button waves-effect waves-light btn right">Sign Up</button>
+                </form>
+            </div> 
+
+        </div>
+        <!--log in modal-->
+        <div id="modal-login" class="modal bottom-sheet">
+            <div class="modal-content">
+               <form id="login-form">
+                   <div class="input-field">
+                     <i class="material-icons prefix">email</i>
+                     <input type="text" name="email" id="logemail" placeholder="Enter your email" class="validate" required/>
+                     <label for="logemail">Email:</label>
+                   </div>
+                   <div class="input-field">
+                       <i class="material-icons prefix">create</i>
+                       <input type="password" name="password" id="logpassword" placeholder="Enter your password" class="validate"required/>
+                       <label for="logpassword">Password:</label>
+                   </div>
+                   <button class="button waves-effect waves-light btn right">Log In</button>
+               </form>
+            </div>
+      </div>
+      <!--modals ends here-->
+      <!--collapse-->
+    <div id="showcollapse">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">book</i>Thirteen Reasons Why</div>
+                <div class="collapsible-body"><span>"Nothing will ever be the same"<br>
+                    "No one knows for certain how much impact they have on the lives of other people."<br>
+                    “You can't stop the future."<br>
+                    “A lot of you cared, just not enough.”<br>
+                    “But you can't get away from yourself."<br>
+                    “If my love were an ocean,"<br>
+                    “You can't go back to how things were."
+                </span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">bookmark</i>Paper Town</div>
+                <div class="collapsible-body"><span>"I wish i can go to the town made of Papers i wanna live with the paper people in paper town"<br>
+                    “That's always seemed so ridiculous to me, that people want to be around someone because they're pretty."<br>
+                    “It is so hard to leave—until you leave."<br>
+                    “I'm not saying that everything is survivable."<br>
+                    “The town was paper, but the memories were not.”
+                </span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">book</i>Alchemist</div>
+                <div class="collapsible-body"><span> "Whenever you desire for something, All the universe conspires in helping you to achieve it"<br>
+                    "It's the possibility of having a dream come true that makes life interesting.”<br>
+                    “When we love, we always strive to become better than we are."<br>
+                    “One is loved because one is loved."<br>
+                    “There is only one thing that makes a dream impossible to achieve: the fear of failure.”
+                </span></div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+    </div> <!--wrapper ends here-->
+
+
+
+
+
+   
+   
+   
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCR8uRnJ5wHnsNXqJniU7I3cs8wlraF1Bk",
+    authDomain: "shopping-account-77382.firebaseapp.com",
+    databaseURL: "https://shopping-account-77382.firebaseio.com",
+    projectId: "shopping-account-77382",
+    storageBucket: "shopping-account-77382.appspot.com",
+    messagingSenderId: "944670232256",
+    appId: "1:944670232256:web:391397f3db2b1d67"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  //lets make auth anfd firestore references in order to store data from database
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+ // db.settings ({ timestampsInSnapshots: true});
+  //update firestore settings if u are using firestore version 5 but if 4 then no need to add this
+ // db.settings({timestampInSnapShots: true});
+</script>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>
